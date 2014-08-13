@@ -138,6 +138,10 @@ class StuffClassifier::Base
     best = nil
 
     scores = cat_scores(text)
+    
+    #return all scores
+    return scores
+    
     scores.each do |score|
       cat, prob = score
       if prob > max_prob

@@ -140,7 +140,12 @@ class StuffClassifier::Base
     scores = cat_scores(text)
     
     #return all scores
-    return scores
+    return_scores = {}
+    scores.each do |score|
+      cat, prob = score
+      return_scores[:cat] = prob
+    end  
+    return return_scores
     
     scores.each do |score|
       cat, prob = score

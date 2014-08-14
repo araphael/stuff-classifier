@@ -143,7 +143,7 @@ class StuffClassifier::Base
     return_scores = {}
     scores.each do |score|
       cat, prob = score
-      return_scores[:cat] = prob
+      return_scores[:#{cat}] = prob
     end  
     return return_scores
     

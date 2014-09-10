@@ -132,7 +132,7 @@ class StuffClassifier::Base
   end
 
   # classify a text
-  def classify(text, default=nil)
+  def classify(text, default=nil, all_scores=false)
     # Find the category with the highest probability
     max_prob = @min_prob
     best = nil
@@ -140,12 +140,14 @@ class StuffClassifier::Base
     scores = cat_scores(text)
     
     #return all scores
-    return_scores = {}
-    scores.each do |score|
-      cat, prob = score
-      return_scores[cat] = prob
+    if all_scores
+      return_scores = {}
+      scores.each do |score|
+        cat, prob = score
+        return_scores[cat] = prob
+      end  
+      return return_scores
     end  
-    return return_scores
     
     scores.each do |score|
       cat, prob = score
